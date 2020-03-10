@@ -1,0 +1,14 @@
+files:
+- settlers: N/A:Select the Windows installer downloaded from GOG
+game:
+  exe: drive_c/GOG Games/Settlers 4 Gold/S4.exe
+  prefix: $GAMEDIR
+installer:
+- task:
+    args: /silent /nogui
+    executable: settlers
+    name: wineexec
+    prefix: $GAMEDIR
+wine:
+  Desktop: true
+  WineDesktop: $RESOLUTION
