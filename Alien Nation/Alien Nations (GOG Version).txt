@@ -1,0 +1,15 @@
+files:
+- game: N/A:Select the installer downloaded from GOG.
+game:
+  arch: win32
+  exe: drive_c/GOG Games/Alien Nations/Bin/AN.exe
+  prefix: $GAMEDIR
+installer:
+- task:
+    args: /SUPPRESSMSGBOXES /VERYSILENT
+    executable: game
+    name: wineexec
+    prefix: $GAMEDIR
+wine:
+  Desktop: true
+  WineDesktop: $RESOLUTION
