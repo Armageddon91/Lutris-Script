@@ -1,0 +1,60 @@
+files:
+- game: N/A:Select the installer downloaded from GOG.
+game:
+  exe: drive_c/GOG Games/Total Annihilation Kingdoms/Kingdoms.exe
+  prefix: $GAMEDIR
+installer:
+- input_menu:
+    description: 'Please choose your preferred Interface language:'
+    id: LANG
+    options:
+    - ENGLISH: English
+    - GERMAN: German
+    - ITALIAN: Italian
+    - FRENCH: French
+    - SPANISH: Spanish
+    preselect: ENGLISH
+- task:
+    app: gdiplus
+    name: winetricks
+    prefix: $GAMEDIR
+- task:
+    args: /VERYSILENT /SUPRESSMSGBOXES
+    executable: $game
+    name: wineexec
+    prefix: $GAMEDIR
+- task:
+    arch: win64
+    key: RendererName
+    name: set_regedit
+    path: HKEY_CURRENT_USER\Software\Cavedog Entertainment\Kingdoms\RendererOptions
+    prefix: $GAMEDIR
+    type: REG_SZ
+    value: Software MMX Rendering
+- task:
+    arch: win64
+    key: RendererPrefs
+    name: set_regedit
+    path: HKEY_CURRENT_USER\Software\Cavedog Entertainment\Kingdoms\RendererOptions
+    prefix: $GAMEDIR
+    type: REG_DWORD
+    value: '00010002'
+- task:
+    arch: win64
+    key: RendererType
+    name: set_regedit
+    path: HKEY_CURRENT_USER\Software\Cavedog Entertainment\Kingdoms\RendererOptions
+    prefix: $GAMEDIR
+    type: REG_DWORD
+    value: '00000002'
+- task:
+    arch: win64
+    key: Language
+    name: set_regedit
+    path: HKEY_CURRENT_USER\Software\Cavedog Entertainment\Kingdoms\InterfaceOptions
+    prefix: $GAMEDIR
+    type: REG_SZ
+    value: $INPUT_LANG
+wine:
+  Desktop: true
+  WineDesktop: $RESOLUTION
