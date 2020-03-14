@@ -1,0 +1,20 @@
+files:
+- patch: N/A:Please select the Patch file
+game:
+  exe: $GAMEDIR/drive_c/GOG Games/Total Annihilation/TotalA.exe
+  prefix: $GAMEDIR
+installer:
+- extract:
+    dst: $CACHE
+    src: $patch
+- copy:
+    dst: $GAMEDIR/drive_c/GOG Games/Total Annihilation
+    src: $CACHE/Deutschpatch
+- task:
+    key: Language
+    name: set_regedit
+    path: HKEY_CURRENT_USER\Software\Cavedog Entertainment\Total Annihilation
+    prefix: $GAMEDIR
+    type: REG_SZ
+    value: german
+requires: total-annihilation-gog
