@@ -1,5 +1,5 @@
 files:
-- game: N/A:Select the installer downloaded from GOG.
+- game: N/A:Please select the installer downloaded from GOG.
 - fix: https://github.com/Armageddon91/Lutris-Script/raw/master/The%20Settlers%20IV/The%20Settler%204%20Fix.zip
 game:
   exe: drive_c/GOG Games/Settlers 4 Gold/S4.exe
