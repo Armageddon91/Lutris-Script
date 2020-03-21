@@ -1,6 +1,6 @@
 files:
 - game: N/A:Please select the installer downloaded from GOG.
-- patch: N/A:Please select the Patch file.
+- patch: https://www.la-patches.de/downloads/gog_keeper2_de_v10.zip
 game:
   exe: drive_c/GOG Games/Dungeon Keeper 2/DKII-DX.exe
   prefix: $GAMEDIR
