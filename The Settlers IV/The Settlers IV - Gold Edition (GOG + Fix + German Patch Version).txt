@@ -1,6 +1,7 @@
+custom-name: Die Siedler IV: Gold Edition
 files:
 - game: N/A:Please select the installer downloaded from GOG.
-- patch: N/A:Please select the Patch file.
+- patch: https://compiware.cry-sys.de/index.php/s/MP2XKMLGFNPKWdL/download
 - fix: https://github.com/Armageddon91/Lutris-Script/raw/master/The%20Settlers%20IV/The%20Settler%204%20Fix.zip
 game:
   exe: drive_c/GOG Games/Settlers 4 Gold/S4.exe
@@ -20,7 +21,12 @@ installer:
     dst: $CACHE
     file: $patch
     format: zip
+- extract:
+    dst: $CACHE
+    file: $CACHE/S4Gold_GerPatchV2.zip
+    format: zip
 - task:
+    args: /SP- /VERYSILENT /SUPPRESSMSGBOXES
     description: Installing German patch
     executable: $CACHE/S4Gold_GerPatchV2.exe
     name: wineexec
