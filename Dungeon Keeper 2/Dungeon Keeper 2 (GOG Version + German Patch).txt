@@ -1,0 +1,35 @@
+files:
+- game: N/A:Please select the installer downloaded from GOG.
+- patch: N/A:Please select the Patch file.
+game:
+  exe: drive_c/GOG Games/Dungeon Keeper 2/DKII-DX.exe
+  prefix: $GAMEDIR
+installer:
+- task:
+    description: Creating Wine prefix
+    name: create_prefix
+    prefix: $GAMEDIR
+- task:
+    args: /SP- /VERYSILENT /SUPPRESSMSGBOXES
+    description: Installing game
+    executable: $game
+    name: wineexec
+    prefix: $GAMEDIR
+- extract:
+    dst: $CACHE
+    file: $patch
+    format: zip
+- task:
+    description: Installing German patch
+    executable: $CACHE/gog_keeper2_de_v10.exe
+    name: wineexec
+    prefix: $GAMEDIR
+- task:
+    key: csmt
+    name: set_regedit
+    path: HKEY_CURRENT_USER\Software\Wine\Direct3D
+    prefix: $GAMEDIR
+    type: REG_DWORD
+    value: '00000000'
+wine:
+  version: lutris-5.2-x86_64
