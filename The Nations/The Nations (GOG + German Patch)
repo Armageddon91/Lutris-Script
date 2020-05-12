@@ -1,0 +1,36 @@
+files:
+- game: N/A:Please select the installer downloaded from GOG.
+- patch: https://compiware.cry-sys.de/index.php/s/sLiA7xqdMd23FLp/download
+game:
+  exe: drive_c/GOG Games/The Nations Gold/bin/game.exe
+  prefix: $GAMEDIR
+installer:
+- task:
+    description: Creating WINE prefix
+    name: create_prefix
+    prefix: $GAMEDIR
+- task:
+    args: /SP- /SUPPRESSMSGBOXES /VERYSILENT
+    description: Installing game
+    executable: game
+    name: wineexec
+    prefix: $GAMEDIR
+- extract:
+    dst: $CACHE
+    file: $patch
+    format: zip
+- extract:
+    dst: $CACHE
+    file: $CACHE/TheNationsGold_GerPatchV3.zip
+    format: zip
+- task:
+    args: /SP- /VERYSILENT /SUPPRESSMSGBOXES
+    description: Installing German patch
+    executable: $CACHE/TheNationsGold_GerPatchV3.exe
+    name: wineexec
+    prefix: $GAMEDIR
+- task:
+    description: Change Resolution
+    executable: $GAMEDIR/drive_c/GOG Games/The Nations Gold/tools/setRegTrouble.exe
+    name: wineexec
+    prefix: $GAMEDIR
