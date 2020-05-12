@@ -1,0 +1,29 @@
+files:
+- game: N/A:Please select the installer downloaded from GOG.
+game:
+  exe: drive_c/GOG Games/The Nations Gold/bin/game.exe
+  prefix: $GAMEDIR
+installer:
+- input_menu:
+    description: Switch resolution between main menu and ingame
+    id: CHANGE_RES
+    options:
+    - 0: 'OFF'
+    - 1: 'ON'
+    preselect: 'OFF'
+- task:
+    args: /SUPPRESSMSGBOXES /VERYSILENT
+    executable: game
+    name: wineexec
+    prefix: $GAMEDIR
+- task:
+    executable: $GAMEDIR/drive_c/GOG Games/The Nations Gold/tools/setRegTrouble.exe
+    name: wineexec
+    prefix: $GAMEDIR
+- task:
+    key: EnableVideoChange
+    name: set_regedit
+    path: HKEY_CURRENT_USER\Software\JoWooD\DV2Addon\Troubleshoot
+    prefix: $GAMEDIR
+    type: REG_DWORD
+    value: $INPUT_CHANGE_RES
