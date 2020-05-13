@@ -1,9 +1,20 @@
 files:
+- game: N/A:Please select the installer downloaded from GOG.
 - patch: N/A:Please select the Patch file
 game:
   exe: $GAMEDIR/drive_c/GOG Games/Total Annihilation/TotalA.exe
   prefix: $GAMEDIR
 installer:
+- task:
+    description: Creating WINE prefix
+    name: create_prefix
+    prefix: $GAMEDIR
+- task:
+    args: /SP- /SUPPRESSMSGBOXES /VERYSILENT
+    description: Installing game
+    executable: game
+    name: wineexec
+    prefix: $GAMEDIR
 - extract:
     dst: $CACHE
     src: $patch
@@ -17,4 +28,9 @@ installer:
     prefix: $GAMEDIR
     type: REG_SZ
     value: german
-requires: total-annihilation-gog
+- task:
+    app: directplay
+    description: Installing Directplay
+    name: winetricks
+    prefix: $GAMEDIR
+    silent: true
