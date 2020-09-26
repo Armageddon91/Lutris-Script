@@ -20,18 +20,18 @@ installer:
 - execute:
     args: -d "$CACHE" "$game"
     file: $CACHE/innoextract
-- move:
-    dst: $GAMEDIR/drive_c/KeeperFX/data
-    src: $CACHE/DATA
-- move:
-    dst: $GAMEDIR/drive_c/KeeperFX/sound
-    src: $CACHE/SOUND
 - extract:
     dst: $GAMEDIR/drive_c/KeeperFX/
     file: $keeperfx
     format: 7z
+- execute:
+    command: cp -n $CACHE/DATA/*.* $GAMEDIR/drive_c/KeeperFX/data
+- execute:
+    command: cp -n $CACHE/SOUND/*.* $GAMEDIR/drive_c/KeeperFX/sound
 - task:
     arch: win32
     executable: $GAMEDIR/drive_c/KeeperFX/launcher.exe
     name: wineexec
     prefix: $GAMEDIR
+wine:
+  version: lutris-5.0-x86_64
