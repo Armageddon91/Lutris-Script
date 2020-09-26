@@ -1,11 +1,12 @@
-custom-name: KeeperFX Unofficial 0.4.7
+custom-name: KeeperFX 0.4.8
 files:
-- game: N/A:Select the installer downloaded from GOG.
-- keeperfx: https://github.com/Loobinex/keeperfx-unofficial/releases/download/v1913/keeperfx_unofficial_0_4_7_complete.7z
-- inno: https://constexpr.org/innoextract/files/innoextract-1.8-linux.tar.xz
+- game: N/A:Please select the installer downloaded from GOG.
+  keeperfx: https://github.com/dkfans/keeperfx/releases/download/v2154/keeperfx_0_4_8_complete.7z
+- inno: https://constexpr.org/innoextract/files/innoextract-1.9-linux.tar.xz
 game:
   arch: win32
   exe: $GAMEDIR/drive_c/KeeperFX/keeperfx.exe
+  gogid: 1207658934
   prefix: $GAMEDIR
 installer:
 - task:
@@ -29,11 +30,6 @@ installer:
     dst: $GAMEDIR/drive_c/KeeperFX/
     file: $keeperfx
     format: 7z
-- copy:
-    dst: $GAMEDIR/drive_c/KeeperFX/levels
-    src: $GAMEDIR/drive_c/KeeperFX/Levels
-- execute:
-    command: rm -fr $GAMEDIR/drive_c/KeeperFX/Levels/
 - task:
     arch: win32
     executable: $GAMEDIR/drive_c/KeeperFX/launcher.exe
